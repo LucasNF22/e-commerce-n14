@@ -8,3 +8,5 @@ const PlatformLayout = ({children} : {children: React.ReactNode}) => {
         </ClerkProvider>
     )
 }
+
+export default PlatformLayout;
