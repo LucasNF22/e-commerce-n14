@@ -16,7 +16,7 @@ export const Logo = () => {
             <div className='hover:opacity-75 transition items-center gap-x-2 hidden md:flex'>
                 <Image
                     src="logo.svg"
-                    alt='"Logo'
+                    alt='Logo'
                     height={30}
                     width={30}
                 />
