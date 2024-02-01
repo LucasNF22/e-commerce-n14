@@ -3,7 +3,9 @@ import { organizations } from "@clerk/nextjs/api";
 import { NextResponse } from "next/server";
  
 export default authMiddleware({
+
   publicRoutes: ["/"],
+  
   afterAuth(auth, req) {
     if(auth.userId && auth.isPublicRoute){
       let path = "/select-org";
