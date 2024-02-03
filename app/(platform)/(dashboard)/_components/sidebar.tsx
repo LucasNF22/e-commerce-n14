@@ -49,10 +49,52 @@ export const Sidebar = ( { storageKey = "t-sidebar-state" }: SidebarProps ) => {
         }));
     };
 
+    if( !isLoadedOrg || !isLoadedOrgList || userMemberships.isLoading ){
+        return(
+            <>
+                <Skeleton />
+            </>
+        )
+    }
+
     return(
-        <div>
-            SIDEBAR
-        </div>
+       <>
+            <div className='font-medium text-xs items-center mb-1'>
+                <span className='pl-4'>
+                    WorkSpaces
+                </span>
+                <Button
+                    asChild
+                    type="button"
+                    size="icon"
+                    variant="ghost"
+                    className='ml-auto'
+                >
+                    <Link href="/select-org">
+                        <Plus
+                            className='h-4 w-4'
+                        />
+                    </Link>
+                </Button>
+            </div>
+            <Accordion
+                type='multiple'
+                defaultValue={defaultAccordionValue}
+                className='space-y-2'
+            >
+                { userMemberships.data.map(({ organization }) =>(
+                    <NavItem
+                        key={ organization.id }
+                        isActive={ activeOrganization?.id === organization.id }
+                        isExpanded={ expanded[ organization.id ] }
+                        organization={ organization }
+                        onExpand={ onExpand }
+                    >
+
+                    </NavItem>
+                ))}
+            </Accordion>
+       </>
     )
 };
 
